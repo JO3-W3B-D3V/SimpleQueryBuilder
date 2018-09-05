@@ -42,11 +42,11 @@ class QueryBuilder {
    * @return QueryBuilder
    */
   public function select ($select) {
-    $me = $this;
     if (strpos(strtoupper($select), 'SELECT') === false) {
       $select = "SELECT " . $select;
     }
 
+    $this->__select = $select;
     return $this;
   }
 
@@ -88,7 +88,12 @@ class QueryBuilder {
    */
   public function join ($table) {
     if (isset($table) && $table != "") {
-      $this->__joinType = " JOIN " . $table;
+
+      if (strpos(strtoupper($table), 'JOIN') === false) {
+        $table = " JOIN " . $table;
+      }
+
+      $this->__joinType = $table;
     }
     return $this;
   }
@@ -101,7 +106,12 @@ class QueryBuilder {
    */
   public function innerJoin ($table) {
     if (isset($table) && $table != "") {
-      $this->__joinType = " INNER JOIN " . $table;
+
+      if (strpos(strtoupper($table), 'INNER JOIN') === false) {
+        $table = " INNER JOIN " . $table;
+      }
+
+      $this->__joinType = $table;
     }
     return $this;
   }
@@ -114,7 +124,12 @@ class QueryBuilder {
    */
   public function rightJoin ($table) {
     if (isset($table) && $table != "") {
-      $this->__joinType = " RIGHT JOIN " . $table;
+
+      if (strpos(strtoupper($table), 'RIGHT JOIN') === false) {
+        $table = " RIGHT JOIN " . $table;
+      }
+
+      $this->__joinType = $table;
     }
     return $this;
   }
@@ -127,6 +142,11 @@ class QueryBuilder {
    */
   public function leftJoin ($table) {
     if (isset($table) && $table != "") {
+
+      if (strpos(strtoupper($table), 'LEFT JOIN') === false) {
+        $table = " LEFT JOIN " . $table;
+      }
+
       $this->__joinType = " LEFT JOIN " . $table;
     }
     return $this;
@@ -141,11 +161,14 @@ class QueryBuilder {
    */
   public function on ($valueLeft, $valueRight) {
     if (isset($this->__joinType) && $this->__joinType != "") {
-      $this->__joinType = $this->__joinType
-        . " ON ". $valueLeft . " = ". $valueRight;
 
+      if (strpos(strtoupper($this->__joinType), 'ON') === false) {
+        $this->__joinType .= " ON ";
+      }
+
+      $this->__joinType .= $valueLeft . " = ". $valueRight;
       array_push($this->__joins, $this->__joinType);
-      $this->__joinType = "";
+      $this->__joinType = ""; // reset
     }
     return $this;
   }
