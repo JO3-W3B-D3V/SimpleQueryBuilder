@@ -3,7 +3,7 @@ The purpose of this project is to simply allow for a very minimal PHP query buil
 
 ## Demo
 ```php
-$qb = new QBuilder();
+$qb = new QueryBuilder();
 
 $q = $qb->select("x")->
   from("test")->
