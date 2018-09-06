@@ -146,7 +146,7 @@ class QueryBuilder {
             if (strpos(strtoupper($table), 'LEFT JOIN') === false) {
                 $table = " LEFT JOIN " . $table;
             }
-            $this->__joinType = " LEFT JOIN " . $table;
+            $this->__joinType = $table;
         }
         return $this;
     }
