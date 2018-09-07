@@ -308,9 +308,9 @@ function QueryBuilder () {
     let string = '';
     let n = '\n';
 
-    string += select + n + from + n + where + n;
+    string += select + n + from + n;
     joins.forEach((x) => { string += x + n; });
-    string += orderby + n + groupby + n;
+    string += where + n + orderby + n + groupby + n;
     return string;
   };
 
