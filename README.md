@@ -2,7 +2,7 @@
 The purpose behind this project is to implement a _nice enough_ object which has a set of methods, which will allow you to write a traditional SQL query. This project is a simple approach to allowing people to migrate away from having to do things like: 
 
 ```php
-$queryString = 'SELECT X FROM TEST INNDER JOIN OTHER_TEST';
+$queryString = 'SELECT X FROM TEST INNER JOIN OTHER_TEST';
 $queryString .= 'ON TEXT.ID = OTHER_TEST.ID';
 $queryString .= 'LEFT JOIN OTHER_TABLE ON OTHER_TABLE.CID = TEST.CID';
 $queryString .= 'ORDER BY X GROUP BY T';
