@@ -12,6 +12,12 @@
  * @since     05/09/2018
  * @license   MIT
  * @copyright (c) Joseph Evans 2018
+ * @todo      Review this source code, I think that it could 
+ *            possibly be implemented in a better way, possibly 
+ *            allowing a developer to write some sub query, 
+ *            maybe think about including a 'with' method so a
+ *            developer would be more than able to write some 
+ *            with clause(s), etc.... 
  */
 
 class QueryBuilder {
