@@ -51,3 +51,19 @@ let query = qb.select("x")
   .build();
 console.log(query);
 ```
+
+### Java 
+This is another simple demo showing you how this code can be used in Java. The Java implementation _may_ be the neatest implementation so far. One thing I like about the Java implementation is how it makes use of method overloading, but that _could_ just be my personal preference(s). 
+
+```java 
+QueryBuilder qb = new QueryBuilder();
+String query = qb.select("x")
+  .from ("test")
+  .where("age > 10")
+  .innerJoin("otherTest")
+  .on("test.id", "otherTest.id")
+  .orderBy("x")
+  .groupBy("id")
+  .build();
+System.out.println(query);
+```
