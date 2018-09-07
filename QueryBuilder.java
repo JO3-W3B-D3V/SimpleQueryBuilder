@@ -33,6 +33,8 @@ public class QueryBuilder {
     private final List<String> joins = new ArrayList<>();
     private final static String NEW_LINE = "\n"; // short for newline 
     
+    
+    
     /*
      * These properties are not YET being used 
      * however the plan is to implement their use(s) at a 
@@ -46,6 +48,7 @@ public class QueryBuilder {
     private String offset;
     
     
+    
     /**
      * This is just a very basic constructor, it serves nothing 
      * more than allowing other objects/classes the ability to 
@@ -55,6 +58,8 @@ public class QueryBuilder {
         // TODO ... 
         this.build = "";
     }
+    
+    
     
     /**
      * @ignore 
@@ -73,6 +78,8 @@ public class QueryBuilder {
     private Boolean isValidString (String string) {
         return string != null && !string.isEmpty();
     }
+    
+    
     
     /**
      * @ignore
@@ -94,6 +101,8 @@ public class QueryBuilder {
         return reference;
     }
     
+    
+    
     /**
      * @param  select {String}
      * @return QueryBuilder
@@ -105,6 +114,8 @@ public class QueryBuilder {
         this.select = process(select, "SELECT");
         return this;
     }
+    
+    
     
     /**
      * @param  from {String}
@@ -118,6 +129,8 @@ public class QueryBuilder {
         return this;
     }    
     
+    
+    
     /**
      * @param  where {String}
      * @return QueryBuilder 
@@ -129,6 +142,8 @@ public class QueryBuilder {
         this.where = process(where, "WHERE");
         return this;
     }
+    
+    
     
     /**
      * @param  join {String}
@@ -142,6 +157,8 @@ public class QueryBuilder {
         return this;
     }
     
+    
+    
     /**
      * @param  join {String}
      * @return QueryBuilder 
@@ -153,6 +170,8 @@ public class QueryBuilder {
         this.join = process(join, "INNER JOIN");
         return this;
     }
+    
+    
     
     /**
      * @param  join {String}
@@ -166,6 +185,8 @@ public class QueryBuilder {
         return this;
     }
     
+    
+    
     /**
      * @param  join {String}
      * @return QueryBuilder
@@ -177,6 +198,8 @@ public class QueryBuilder {
         this.join = process(join, "LEFT JOIN");
         return this;
     }
+    
+    
     
     /**
      * @param  on {String}
@@ -199,6 +222,8 @@ public class QueryBuilder {
         
         return this;
     }
+    
+    
     
     /**
      * @param  column1 {String}
@@ -225,11 +250,29 @@ public class QueryBuilder {
         return this;
     }
     
+    
+    /**
+     * @param  col {String}
+     * @return QueryBuilder 
+     * 
+     * @todo   Allow for the ability to toggle
+     *         the default sorting order.
+     * 
+     * The purpose of this method is to allow 
+     * a developer to just order by a specific 
+     * column, disregarding the actual order.
+     * At the moment it currently will order by 
+     * ascending order, however there's the idea 
+     * to possibly allow a developer to somehow 
+     * toggle this value somewhere.
+     */
     public QueryBuilder orderBy (String col) {
         orderBy = process(col, "ORDER BY");
         orderBy += " ASC ";
         return this;
     }
+    
+    
     
     /**
      * @param  col   {String}
@@ -258,6 +301,7 @@ public class QueryBuilder {
     }
     
     
+    
     /**
      * @param String {group}
      */
@@ -265,6 +309,8 @@ public class QueryBuilder {
         this.groupBy = process(group, "GROUP BY");
         return this;
     }
+    
+    
     
     /**
      * @return String 
@@ -284,4 +330,3 @@ public class QueryBuilder {
         return build;
     }
 }
-
